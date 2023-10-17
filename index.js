@@ -27,9 +27,7 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
-
 const database = client.db("coffeeDB").collection("coffees")
-
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
@@ -85,9 +83,6 @@ async function run() {
             const result = await database.updateOne(query, updateCoffee, options);
             res.send(result);
         })
-
-
-
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
