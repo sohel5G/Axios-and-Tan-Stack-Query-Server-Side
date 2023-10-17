@@ -1,5 +1,5 @@
 ----------------------------------
-Diploy to vercel 
+Deploy to vercel 
 ----------------------------------
 1. npm i -g vercel
 2. create vercel.json file 
