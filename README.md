@@ -27,3 +27,5 @@ Deploy to vercel
 6. finally get the url and replace it on the frontend side
 
 
+[Live Site link > https://coffee-store-4827b.web.app/addcoffee](https://coffee-store-4827b.web.app/addcoffee)
+
