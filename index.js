@@ -27,7 +27,8 @@ const client = new MongoClient(uri, {
         deprecationErrors: true,
     }
 });
-const database = client.db("coffeeDB").collection("coffees")
+const database = client.db("coffeeDB").collection("coffees");
+const userCollection = client.db("coffeeDB").collection("users");
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
@@ -38,6 +39,20 @@ async function run() {
             const result = await database.insertOne(coffee);
             res.send(result);
         })
+
+        // USER COLLECTIONS 
+        app.post('/users', async (req, res) => {
+            const users = req.body;
+            console.log(users)
+            const result = await userCollection.insertOne(users);
+            res.send(result);
+        })
+        app.get('/users', async (req, res) => {
+            const users = userCollection.find()
+            const result = await users.toArray()
+            res.send(result)
+        })
+        // USER COLLECTIONS END
 
         app.get('/coffees', async (req, res) => {
             const coffees = database.find()
@@ -50,7 +65,6 @@ async function run() {
             const query = { _id: new ObjectId(id) };
             const result = await database.deleteOne(query);
             res.send(result);
-            console.log(id);
         })
 
         app.get('/coffees/:id', async (req, res) => {
@@ -84,6 +98,10 @@ async function run() {
             res.send(result);
         })
 
+      
+
+
+
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
@@ -92,6 +110,6 @@ async function run() {
         // await client.close();
     }
 }
-run().catch(console.dir);
+run().catch(console.log);
 
 

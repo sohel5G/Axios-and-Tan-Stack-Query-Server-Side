@@ -1,9 +1,3 @@
-----------------------------------
-Diploy to vercel 
-----------------------------------
-1. npm i -g vercel
-2. create vercel.json file 
-```JavaScript
 {
     "version": 2,
     "builds": [
@@ -20,10 +14,4 @@ Diploy to vercel
         }
     ]
 }
-```
-3. vercel (in the command)
-4. set Environment Variable
-5. vercel --prod
-6. finally get the url and replace it on the frontend side
-
 
