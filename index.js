@@ -1,9 +1,11 @@
-const express = require('express')
-const cors = require('cors')
 require('dotenv').config()
+
+const express = require('express')
 const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
-const app = express()
 const port = process.env.PORT || 5000;
+
+const app = express()
+const cors = require('cors')
 
 //middleware
 app.use(cors());
@@ -32,7 +34,7 @@ const userCollection = client.db("coffeeDB").collection("users");
 async function run() {
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
+        // await client.connect();
 
         app.post('/coffees', async (req, res) => {
             const coffee = req.body;
@@ -98,7 +100,7 @@ async function run() {
             res.send(result);
         })
 
-      
+
 
 
 
